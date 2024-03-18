@@ -1,0 +1,26 @@
+## SPDX-License-Identifier: GPL-2.0-or-later
+
+if BOARD_ASUS_MAXIMUS_XI_HERO
+
+config BOARD_SPECIFIC_OPTIONS
+	def_bool y
+	select BOARD_ROMSIZE_KB_16384
+	select HAVE_ACPI_RESUME
+	select HAVE_ACPI_TABLES
+	select SOC_INTEL_CANNONLAKE_PCH_H
+        select SOC_INTEL_COFFEELAKE
+	# select SOC_INTEL_COMMON_BLOCK_HDA_VERB TODO: add hda verb
+	# select HAVE_OPTION_TABLE TODO: add option table
+	select INTEL_GMA_HAVE_VBT
+	select MAINBOARD_USES_IFD_GBE_REGION
+	select NO_UART_ON_SUPERIO
+	select SPD_CACHE_IN_FMAP
+	select SUPERIO_NUVOTON_NCT6798D
+
+config MAINBOARD_DIR
+	default "asus/maximus_xi_hero"
+
+config MAINBOARD_PART_NUMBER
+	default "Maximus XI Hero"
+
+endif

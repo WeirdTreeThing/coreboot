@@ -1,0 +1,6 @@
+Vendor name: Asus
+Board name: ROG Maximus XI Hero
+Category: desktop
+ROM protocol: SPI
+ROM socketed: n
+Flashrom support: y
