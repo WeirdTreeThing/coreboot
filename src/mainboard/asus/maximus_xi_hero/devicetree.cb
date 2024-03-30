@@ -2,9 +2,6 @@ chip soc/intel/cannonlake
 
 	device cpu_cluster 0 on end
 
-	# FSP configuration
-	register "SaGv" = "SaGv_Enabled"
-
 	# TODO: disable unneeded usb things
 	register "usb2_ports[0]" = "USB2_PORT_TYPE_C(OC4)"
         register "usb2_ports[1]" = "USB2_PORT_TYPE_C(OC0)"
