@@ -19,10 +19,3 @@ static void init_mainboard(void *chip_info)
 struct chip_operations mainboard_ops = {
         .init = init_mainboard,
 };
-
-void mainboard_silicon_init_params(FSPS_UPD *params)
-{
-	params->DmiAspm = 0;
-	params->PchDmiAspmCtrl = 0;
-	params->PchLegacyIoLowLatency = 1;
-}

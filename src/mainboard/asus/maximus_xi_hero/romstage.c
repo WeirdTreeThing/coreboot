@@ -28,8 +28,5 @@ static const struct cnl_mb_cfg memcfg = {
 
 void mainboard_memory_init_params(FSPM_UPD *memupd)
 {
-	memupd->FspmConfig.DmiMaxLinkSpeed = 3;		// Force CPU <-> PCH link to run at Gen3 speed
-	memupd->FspmConfig.EnableAbove4GBMmio = 1;	// Self-explanatory
-
 	cannonlake_memcfg_init(&memupd->FspmConfig, &memcfg);
 }
