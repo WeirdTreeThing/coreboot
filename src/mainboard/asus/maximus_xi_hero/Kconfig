@@ -16,7 +16,6 @@ config BOARD_SPECIFIC_OPTIONS
 	select NO_UART_ON_SUPERIO
 	select SOC_INTEL_CANNONLAKE_PCH_H
 	select SOC_INTEL_COFFEELAKE
-	select SOC_INTEL_COMMON_BLOCK_HDA_VERB
 
 config MAINBOARD_DIR
 	default "asus/maximus_xi_hero"
