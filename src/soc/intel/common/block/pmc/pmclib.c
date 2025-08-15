@@ -908,7 +908,7 @@ uint8_t get_pm_pwr_cyc_dur(uint8_t slp_s4_min_assert, uint8_t slp_s3_min_assert,
 void pmc_set_acpi_mode(void)
 {
 	if (!CONFIG(NO_SMM) && !acpi_is_wakeup_s3()) {
-		apm_control(APM_CNT_ACPI_ENABLE);
+		apm_control(APM_CNT_ACPI_DISABLE);
 	}
 }
 
