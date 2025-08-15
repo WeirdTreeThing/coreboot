@@ -92,15 +92,15 @@ chip soc/intel/cannonlake
 		end
 
 		device ref pcie_rp17 on
-			register "PcieRpSlotImplemented[16]" = "1"
+			register "PcieRpSlotImplemented[16]" = "true"
 		end
 
 		device ref pcie_rp1 on
-			register "PcieRpSlotImplemented[0]" = "1"
+			register "PcieRpSlotImplemented[0]" = "true"
 		end
 
 		device ref pcie_rp9 on
-			register "PcieRpSlotImplemented[8]" = "1"
+			register "PcieRpSlotImplemented[8]" = "true"
 		end
 
 		device ref lpc_espi on
