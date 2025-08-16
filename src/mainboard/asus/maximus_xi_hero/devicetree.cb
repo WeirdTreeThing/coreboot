@@ -1,47 +1,7 @@
 chip soc/intel/cannonlake
-	# TODO: disable unneeded usb things
-	register "usb2_ports[0]" = "USB2_PORT_TYPE_C(OC4)"
-        register "usb2_ports[1]" = "USB2_PORT_TYPE_C(OC0)"
-        register "usb2_ports[2]" = "USB2_PORT_MID(OC2)"
-        register "usb2_ports[3]" = "USB2_PORT_MID(OC5)"
-        register "usb2_ports[4]" = "USB2_PORT_MID(OC5)"
-        register "usb2_ports[5]" = "USB2_PORT_MID(OC0)"
-        register "usb2_ports[6]" = "USB2_PORT_MID(OC1)"
-        register "usb2_ports[7]" = "USB2_PORT_MID(OC1)"
-        register "usb2_ports[9]" = "USB2_PORT_MID(OC3)"
-        register "usb2_ports[10]" = "USB2_PORT_MID(OC3)"
-        register "usb2_ports[11]" = "USB2_PORT_MID(OC6)"
-        register "usb2_ports[12]" = "USB2_PORT_MID(OC6)"
-
-        register "usb3_ports[0]" = "USB3_PORT_DEFAULT(OC4)"
-        register "usb3_ports[1]" = "USB3_PORT_DEFAULT(OC0)"
-        register "usb3_ports[2]" = "USB3_PORT_DEFAULT(OC2)"
-        register "usb3_ports[3]" = "USB3_PORT_DEFAULT(OC5)"
-        register "usb3_ports[4]" = "USB3_PORT_DEFAULT(OC5)"
-        register "usb3_ports[5]" = "USB3_PORT_DEFAULT(OC0)"
-        register "usb3_ports[6]" = "USB3_PORT_DEFAULT(OC1)"
-        register "usb3_ports[7]" = "USB3_PORT_DEFAULT(OC1)"
-        register "usb3_ports[8]" = "USB3_PORT_DEFAULT(OC_SKIP)"
-        register "usb3_ports[9]" = "USB3_PORT_DEFAULT(OC3)"
-
-	# Enable sata support
-	register "SataSalpSupport" = "1"
-        register "SataPortsEnable[0]" = "1"
-        register "SataPortsEnable[1]" = "1"
-        register "SataPortsEnable[2]" = "1"
-        register "SataPortsEnable[3]" = "1"
-        register "SataPortsEnable[4]" = "1"
-        register "SataPortsEnable[5]" = "1"
-        register "SataPortsEnable[6]" = "1"
-        register "SataPortsEnable[7]" = "1"
-
-	register "PchHdaDspEnable" = "0"
-	register "PchHdaAudioLinkHda" = "1"
-
 	# TODO: disable unneeded things here
 	register "PcieClkSrcUsage[0]" = "0x80"
 	register "PcieClkSrcUsage[1]" = "0x80"
-	register "PcieClkSrcUsage[2]" = "0x80"
 	register "PcieClkSrcUsage[3]" = "0x80"
 	register "PcieClkSrcUsage[4]" = "0x80"
 	register "PcieClkSrcUsage[5]" = "0x80"
@@ -79,7 +39,37 @@ chip soc/intel/cannonlake
 			register "DdiPortDHpd" = "1"
 			register "DdiPortDDdc" = "1"
 		end
-		device ref xhci on end
+		device ref xhci on
+			# TODO: usb mapping
+			register "usb2_ports" = "{
+				[0] = USB2_PORT_MID(OC_SKIP),
+				[1] = USB2_PORT_MID(OC_SKIP),
+				[2] = USB2_PORT_MID(OC_SKIP),
+				[3] = USB2_PORT_MID(OC_SKIP),
+				[4] = USB2_PORT_MID(OC_SKIP),
+				[5] = USB2_PORT_MID(OC_SKIP),
+				[6] = USB2_PORT_MID(OC_SKIP),
+				[7] = USB2_PORT_MID(OC_SKIP),
+				[8] = USB2_PORT_MID(OC_SKIP),
+				[9] = USB2_PORT_MID(OC_SKIP),
+				[10] = USB2_PORT_MID(OC_SKIP),
+				[11] = USB2_PORT_MID(OC_SKIP),
+				[12] = USB2_PORT_MID(OC_SKIP)
+			}"
+
+			register "usb3_ports" = "{
+				[0] = USB3_PORT_DEFAULT(OC_SKIP),
+				[1] = USB3_PORT_DEFAULT(OC_SKIP),
+				[2] = USB3_PORT_DEFAULT(OC_SKIP),
+				[3] = USB3_PORT_DEFAULT(OC_SKIP),
+				[4] = USB3_PORT_DEFAULT(OC_SKIP),
+				[5] = USB3_PORT_DEFAULT(OC_SKIP),
+				[6] = USB3_PORT_DEFAULT(OC_SKIP),
+				[7] = USB3_PORT_DEFAULT(OC_SKIP),
+				[8] = USB3_PORT_DEFAULT(OC_SKIP),
+				[9] = USB3_PORT_DEFAULT(OC_SKIP)
+			}"
+		end
 		device ref xdci off end
 		device ref shared_sram on end
 		device ref cnvi_wifi on
@@ -88,22 +78,37 @@ chip soc/intel/cannonlake
                         end
                 end
 		device ref heci1 on end
-		device ref sata on end
+		device ref sata on
+			register "SataSalpSupport" = "1"
+			register "SataPortsEnable[0]" = "1"
+			register "SataPortsEnable[1]" = "1"
+			register "SataPortsEnable[2]" = "1"
+			register "SataPortsEnable[3]" = "1"
+			register "SataPortsEnable[4]" = "1"
+			register "SataPortsEnable[5]" = "1"
+			register "SataPortsEnable[6]" = "1"
+			register "SataPortsEnable[7]" = "1"
+		end
 		device ref pcie_rp17 on
-		        register "PcieRpSlotImplemented[16]" = "1"
+		        register "PcieRpSlotImplemented[16]" = "true"
 		end
 		device ref pcie_rp1 on
-                        register "PcieRpSlotImplemented[0]" = "1"
+                        register "PcieRpSlotImplemented[0]" = "true"
                 end
 		device ref pcie_rp9 on
-                        register "PcieRpSlotImplemented[8]" = "1"
+                        register "PcieRpSlotImplemented[8]" = "true"
                 end
 		device ref lpc_espi on
 		        # TODO: add tpm and sio
 		end
-		device ref hda on end
+		device ref hda on
+			register "PchHdaDspEnable" = "0"
+			register "PchHdaAudioLinkHda" = "1"
+		end
 		device ref smbus on end
 		device ref fast_spi on end
-		device ref gbe on end
+		device ref gbe on
+			register "PcieClkSrcUsage[2]" = "PCIE_CLK_LAN"
+		end
 	end
 end
