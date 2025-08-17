@@ -33,5 +33,14 @@ void mainboard_memory_init_params(FSPM_UPD *mupd)
 	mupd->FspmConfig.ApertureSize = 3; // 512MB
 	mupd->FspmConfig.IgdDvmt50PreAlloc = 2; // 64MB
 
+	/*
+	// XMP (failed experiment)
+	mupd->FspmConfig.SpdProfileSelected = 2; // XMP Profile 1
+	mupd->FspmConfig.DdrFreqLimit = 3200;
+	mupd->FspmConfig.RefClk = 1; // 100MHz
+	mupd->FspmConfig.Ratio = 0; // Auto
+	mupd->FspmConfig.VddVoltage = 1350; // 1.35V
+	*/
+	
 	cannonlake_memcfg_init(&mupd->FspmConfig, &memcfg);
 }
