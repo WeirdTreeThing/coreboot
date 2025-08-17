@@ -26,7 +26,12 @@ static const struct cnl_mb_cfg memcfg = {
 	.vref_ca_config = 2,
 };
 
-void mainboard_memory_init_params(FSPM_UPD *memupd)
+void mainboard_memory_init_params(FSPM_UPD *mupd)
 {
-	cannonlake_memcfg_init(&memupd->FspmConfig, &memcfg);
+	// iGPU
+	mupd->FspmConfig.GttSize = 3; // 8MB
+	mupd->FspmConfig.ApertureSize = 3; // 512MB
+	mupd->FspmConfig.IgdDvmt50PreAlloc = 2; // 64MB
+
+	cannonlake_memcfg_init(&mupd->FspmConfig, &memcfg);
 }
