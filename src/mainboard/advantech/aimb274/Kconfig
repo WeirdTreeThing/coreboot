@@ -1,0 +1,31 @@
+## SPDX-License-Identifier: GPL-2.0-only
+
+if BOARD_ADVANTECH_AIMB274
+
+config BOARD_SPECIFIC_OPTIONS
+	def_bool y
+	select AZALIA_USE_LEGACY_VERB_TABLE
+	select BOARD_ROMSIZE_KB_16384
+	select HAVE_ACPI_RESUME
+	select HAVE_ACPI_TABLES
+	select MAINBOARD_HAS_LIBGFXINIT # FIXME: check this
+	select NORTHBRIDGE_INTEL_HASWELL
+	select SERIRQ_CONTINUOUS_MODE
+	select SOUTHBRIDGE_INTEL_LYNXPOINT
+
+config MAINBOARD_DIR
+	string
+	default "advantech/aimb274"
+
+config MAINBOARD_PART_NUMBER
+	string
+	default "Aimb274"
+
+config VGA_BIOS_ID
+	string
+	default "8086,0412"
+
+config USBDEBUG_HCD_INDEX # FIXME: check this
+	int
+	default 2
+endif
