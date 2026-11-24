@@ -18,6 +18,7 @@ private package GMA.Mainboard is
       HDMI3,
       Analog,
       LVDS,
-      eDP);
+      eDP,
+      others => Disabled);
 
 end GMA.Mainboard;

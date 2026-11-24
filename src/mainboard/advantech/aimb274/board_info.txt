@@ -1,4 +1,4 @@
-Category: desktop
+Category: mini
 ROM protocol: SPI
-Flashrom support: n
+Flashrom support: y
 FIXME: check category, , put ROM package, ROM socketed, Release year
